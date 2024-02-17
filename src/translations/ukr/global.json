@@ -1,0 +1,13 @@
+{
+    "header": {
+        "product": "Продукт", 
+        "productDropdown": {
+            "enrollment": "Реєстрація",
+            "specialPrograms": "Спеціальні програми",
+            "gradebook": "Журнал оцінок",
+            "documentManagement": "Керування документами",
+            "automations": "Автоматизації"
+        }
+
+    }
+}
