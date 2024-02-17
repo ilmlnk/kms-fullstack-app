@@ -19,7 +19,7 @@ import { Button } from './ui/button'
 const products = [
     { name: 'Enrollment', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
     { name: 'Special Programs', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Gradebook', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+    { name: 'Gradebook', description: 'Your customers&apos; data will be safe and secure', href: '#', icon: FingerPrintIcon },
     { name: 'Document management', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
     { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
 ]
