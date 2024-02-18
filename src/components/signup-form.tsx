@@ -246,7 +246,7 @@ export default function SignUpForm() {
                                         <CrossCircledIcon className="" />
                                     </span>
                                 )}
-                                <p>Username should contain letters, numbers, and periods
+                                <p>Username should contain letters, numbers, periods
                                 </p>
                             </div>
                             <div className="flex items-center">
