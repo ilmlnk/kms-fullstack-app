@@ -34,13 +34,13 @@ import {
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react"
-import { Separator } from "./ui/separator"
+import { Separator } from "@/components/ui/separator"
 import zxcvbn from 'zxcvbn';
 import axios from "axios"
 
 
 
-export default function SignUpForm() {
+function ChangeDataForm() {
     // form fields
     const [firstName, setFirstName] = useState<string>();
     const [lastName, setLastName] = useState<string>();
@@ -180,7 +180,7 @@ export default function SignUpForm() {
     }, [router]);
     return (
         <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
-                <Button className="absolute top-10 left-10" onClick={onClick}>
+                <Button className="absolute top-20 left-10" onClick={onClick}>
                     <ChevronLeft className={cn(
                         "h-6 w-4"
                     )} />
@@ -294,139 +294,9 @@ export default function SignUpForm() {
                             </p>
                         </Card>
                     </div>
-                    <Card className="w-[500px]">
-                        <CardHeader>
-                            <CardTitle className="text-2xl text-center">
-                                Verification Process
-                            </CardTitle>
-                            <CardDescription className="text-center">
-                                Our tips will help you to sign up correctly :)
-                            </CardDescription>
-                        </CardHeader>
-
-                        <CardContent>
-                            <div className={cn("pt-4 pb-4")}>
-                                <h3 className={cn(
-                                    "font-semibold text-xl",
-                                )}>Username checks</h3>
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>Username should contain letters, numbers, periods
-                                    </p>
-                                </div>
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>
-                                        Don&apos;t contain special characters
-                                    </p>
-                                </div>
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>Username should begin with letter</p>
-                                </div>
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>
-                                        Username should end with letter
-                                    </p>
-                                </div>
-                            </div>
-                            <Separator className="mt-2 mb-2" />
-                            <div className="pt-4 pb-4">
-                                <h3 className="font-semibold text-xl">Password checks</h3>
-                                <div className="flex items-center">
-                                    {/* lowercase letter validation */}
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>At least one lowercase letter</p>
-                                </div>
-                                {/* uppercase letter validation */}
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>At least one uppercase letter</p>
-                                </div>
-                                {/* number validation */}
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>At least one number</p>
-                                </div>
-                                {/* special character validation */}
-                                <div className="flex items-center">
-                                    {lowerValidated ? (
-                                        <span className={cn("mr-4 text-green-600")}>
-                                            <CheckCircledIcon />
-                                        </span>
-                                    ) : (
-                                        <span className={cn("mr-4 text-red-600")}>
-                                            <CrossCircledIcon className="" />
-                                        </span>
-                                    )}
-                                    <p>At least one special character</p>
-                                </div>
-                                {/* password strength */}
-                                <div className="mt-4">
-                                    <h6>Password Strength</h6>
-                                    <p>{passwordStrength.feedback.suggestions.join(' ')}</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
                 </div >
         </div >
     )
 }
+
+export default ChangeDataForm;

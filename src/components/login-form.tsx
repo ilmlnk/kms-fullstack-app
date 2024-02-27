@@ -1,5 +1,6 @@
 "use client"
 
+import { FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -29,7 +30,7 @@ export default function LoginAccount() {
     const rememberMeExpirationDate = Date.now() + 30 * 24 * 60 * 60 * 1000;
     const standardExpirationDate = Date.now() + 60 * 60 * 1000;
 
-    const [email, setEmail] = useState('');
+    const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
 
     // login state
@@ -38,9 +39,6 @@ export default function LoginAccount() {
 
     // Remember me check
     const [rememberMe, setRememberMe] = useState(false);
-
-    // form hook
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     // back button
     const onClick = useCallback(() => {
@@ -55,25 +53,12 @@ export default function LoginAccount() {
         
     }
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async () => {
         try {
-            setLoading(true);
-            const response = await axios.post("/api/login", data);
-            const { token } = response.data;
-            const userId = response.data.id;
-            if (rememberMe) {
-                window.localStorage.setItem('token', token);
-                window.localStorage.setItem('expiresAt', rememberMeExpirationDate.toString());
-            } else {
-                window.localStorage.setItem("token", token);
-                window.localStorage.setItem('expiresAt', standardExpirationDate.toString());
-            }
-            router.push(`/home/${userId}`);
-        } catch (err: any) {
-            setError(err.response.data.message); // display the error message from the API
-            resetFields(); // clear the input fields
-        } finally {
-            setLoading(false); // set loading state to false
+            const response = await axios.post('/api/login', { usernameOrEmail, password });
+            
+        } catch (err) {
+
         }
     }
 
@@ -85,7 +70,7 @@ export default function LoginAccount() {
                     "h-6 w-4"
                 )} />
             </Button>
-            <div className="w-full m-auto bg-white lg:max-w-lg">
+            <div className="w-full m-auto lg:max-w-lg">
 
                 <Card>
                     <CardHeader className="space-y-1">
@@ -97,7 +82,7 @@ export default function LoginAccount() {
                     <CardContent className="grid gap-4">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email or Username</Label>
-                            <Input id="email" type="email" placeholder="Inpute email or username" />
+                            <Input id="email" type="email" placeholder="Input email or username" />
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="password">Password</Label>
@@ -113,8 +98,8 @@ export default function LoginAccount() {
                             </label>
                         </div>
                     </CardContent>
-                    <CardFooter className="flex flex-col" onClick={onSubmit}>
-                        <Button className="w-full">Login</Button>
+                    <CardFooter className="flex flex-col">
+                        <Button onSubmit={onSubmit} className="w-full">Login</Button>
                     </CardFooter>
                     <div className="relative mb-2">
                         <div className="absolute inset-0 flex items-center">

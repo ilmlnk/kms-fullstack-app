@@ -1,7 +1,9 @@
-export default function Home() {
+const CompanyPage = () => {
     return (
         <div>
             
         </div>
     );
 }
+
+export default CompanyPage;
