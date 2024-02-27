@@ -20,6 +20,8 @@ import Link from 'next/link'
 import { Button } from './ui/button'
 import { Switch } from './ui/switch'
 import { MoonIcon, SunIcon } from 'lucide-react'
+import { ModeToggle } from './theme-toggle'
+import { DialogWindow } from './dialog-window'
 
 const products = [
     { name: 'KinderSprout IT Services', description: 'Empowering your digital presence with insightful traffic analytics', href: '/enrollment', icon: ServerStackIcon },
@@ -50,7 +52,7 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="bg-white">
+        <header className="">
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <Link href="/" className="-m-1.5 p-1.5">
@@ -69,7 +71,7 @@ export default function Header() {
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
-                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 transition duration-200">
+                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                             Product
                             <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                         </Popover.Button>
@@ -107,12 +109,12 @@ export default function Header() {
                         </Transition>
                     </Popover>
 
-                    <Link href="/marketplace" className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 transition duration-200">
+                    <Link href="/marketplace" className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                         Marketplace
                     </Link>
 
                     <Popover className="relative">
-                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 transition duration-200">
+                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                             Community & Support
                             <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                         </Popover.Button>
@@ -126,7 +128,7 @@ export default function Header() {
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
                         >
-                            <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                            <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md bg-gray-50 overflow-hidden rounded-3xl  shadow-lg ring-1 ring-gray-900/5">
                                 <div className="p-4">
                                     {community.map((item) => (
                                         <div
@@ -150,28 +152,21 @@ export default function Header() {
                         </Transition>
                     </Popover>
 
-                    <a href="/company" className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 transition duration-200">
+                    <a href="/company" className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                         Company
                     </a>
                 </Popover.Group>
-                <div className='flex ml-12'>
-                    <span className='mr-2'>
-                        <SunIcon/>
-                    </span>
-                    <Switch/>
-                    <span className='ml-2'>
-                        <MoonIcon/>
-                    </span>
-                </div>
+
+                <ModeToggle />
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
-                    <Link href="/sign-up" className="text-sm font-semibold mr-6 leading-6 text-gray-900 hover:text-blue-500 transition duration-200">
-                        Sign up
-                    </Link>
-                    <Button className='hover:bg-blue-500 transition duration-200'>
-                        <Link href="/sign-in" className="text-sm font-semibold leading-6 pl-2 pr-2">
+                    <DialogWindow>
+                        Sign Up
+                    </DialogWindow>
+                    <Link href="/sign-in" className="text-sm font-semibold leading-6 pl-2 pr-2">
+                        <Button variant="outline" className='ml-4 hover:border-blue-500 hover:text-white hover:bg-blue-500 transition duration-200'>
                             Log in
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
