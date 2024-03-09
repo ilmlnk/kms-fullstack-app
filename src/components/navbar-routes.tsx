@@ -17,15 +17,14 @@ export const NavbarRoutes = () => {
     const router = useRouter();
     const { setTheme } = useTheme();
 
-    const isTeacherPage = pathname?.startsWith('/teacher/dashboard');
-    const isParentPage = pathname?.startsWith('/chapter');
+    const isTeacherPage = pathname?.includes('/teacher');
 
 
     return (
         <div className={`flex gap-x-2 ml-auto `}>
             <NotificationMenu />
             <ModeToggle />
-            {isTeacherPage || isParentPage ? (
+            {isTeacherPage ? (
                 <Link href="/user/dashboard">
                     <Button variant="ghost">
                         <LogOut className="h-4 w-4 mr-2" />
@@ -33,7 +32,7 @@ export const NavbarRoutes = () => {
                     </Button>
                 </Link>
             ) : (
-                <Link href="/teacher/dashboard/courses">
+                <Link href="/teacher/dashboard">
                     <Button variant="ghost" className="mr-4">
                         Teacher Mode
                     </Button>
