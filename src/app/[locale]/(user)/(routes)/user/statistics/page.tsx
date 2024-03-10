@@ -1,4 +1,4 @@
-import { DataTable } from "@/app/(user)/_components/data-table";
+import { DataTable } from "../../../_components/data-table"
 
 const columns = [
     {

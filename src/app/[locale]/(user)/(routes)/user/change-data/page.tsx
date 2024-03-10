@@ -1,4 +1,4 @@
-import ChangeDataForm from "@/app/(user)/_components/change-data-form"
+import ChangeDataForm from "../../../_components/change-data-form";
 
 const ChangeDataPage = () => {
     return (

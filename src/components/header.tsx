@@ -12,16 +12,18 @@ import {
     XMarkIcon,
     ServerStackIcon,
     WrenchScrewdriverIcon,
-    MagnifyingGlassCircleIcon
+    MagnifyingGlassCircleIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import { Logo } from '@/app/(dashboard)/_components/logo'
+import { Logo } from '@/app/[locale]/(dashboard)/_components/logo'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { Switch } from './ui/switch'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { ModeToggle } from './theme-toggle'
 import { DialogWindow } from './dialog-window'
+import { GlobeIcon } from 'lucide-react'
+import { LanguageToggle } from './language-toggle'
 
 const products = [
     { name: 'KinderSprout IT Services', description: 'Empowering your digital presence with insightful traffic analytics', href: '/enrollment', icon: ServerStackIcon },
@@ -156,7 +158,8 @@ export default function Header() {
                         Company
                     </a>
                 </Popover.Group>
-
+                
+                <LanguageToggle/>
                 <ModeToggle />
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
                     <DialogWindow>

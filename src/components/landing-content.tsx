@@ -145,7 +145,7 @@ const LandingContent = () => {
                 </div>
             </div>
 
-            <div className="bg-[#f4ede4] pt-32 pb-32">
+            <div className="bg-[#f4ede4] dark:bg-[#917755] pt-32 pb-32">
                 <h1 className="text-center mb-8 text-5xl font-semibold">Our Advantages</h1>
 
                 {/* Content */}
