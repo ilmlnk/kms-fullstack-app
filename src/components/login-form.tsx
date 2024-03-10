@@ -1,6 +1,14 @@
 "use client"
 
-import { FormEvent } from "react"
+export default function LoginAccount() {
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
+/*import { FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -23,21 +31,25 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useRef } from "react"
-
+import * as z from 'zod';
+import { Form } from "./ui/form"
 
 export default function LoginAccount() {
     const router = useRouter();
-    const rememberMeExpirationDate = Date.now() + 30 * 24 * 60 * 60 * 1000;
-    const standardExpirationDate = Date.now() + 60 * 60 * 1000;
 
-    const [usernameOrEmail, setUsernameOrEmail] = useState('');
-    const [password, setPassword] = useState('');
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
 
-    // login state
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState<boolean>(false);
+        const formSchema = z.object({
+            usernameOrEmail: z.string().min(1, {
+                message: "Username or email is required",
+            }),
+            password: z.string().min(1, {
+                message: "Password is required",
+            })
+        });
 
-    // Remember me check
+    }
     const [rememberMe, setRememberMe] = useState(false);
 
     // back button
@@ -47,20 +59,7 @@ export default function LoginAccount() {
 
     const handleCheckboxChange = () => {
         setRememberMe(!rememberMe);
-    }
-
-    const resetFields = () => {
-        
-    }
-
-    const onSubmit = async () => {
-        try {
-            const response = await axios.post('/api/login', { usernameOrEmail, password });
-            
-        } catch (err) {
-
-        }
-    }
+    };
 
 
     return (
@@ -71,7 +70,6 @@ export default function LoginAccount() {
                 )} />
             </Button>
             <div className="w-full m-auto lg:max-w-lg">
-
                 <Card>
                     <CardHeader className="space-y-1">
                         <CardTitle className="text-2xl text-center">Sign in</CardTitle>
@@ -82,7 +80,7 @@ export default function LoginAccount() {
                     <CardContent className="grid gap-4">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email or Username</Label>
-                            <Input id="email" type="email" placeholder="Input email or username" />
+                            <Input id="email" type="usernameEmail" placeholder="Input email or username" />
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="password">Password</Label>
@@ -99,7 +97,7 @@ export default function LoginAccount() {
                         </div>
                     </CardContent>
                     <CardFooter className="flex flex-col">
-                        <Button onSubmit={onSubmit} className="w-full">Login</Button>
+                        <Button onSubmit={handleSubmit} className="w-full">Login</Button>
                     </CardFooter>
                     <div className="relative mb-2">
                         <div className="absolute inset-0 flex items-center">
@@ -132,4 +130,4 @@ export default function LoginAccount() {
             </div>
         </div>
     )
-}
+}*/

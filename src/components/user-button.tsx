@@ -33,8 +33,12 @@ import {
 
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import { Avatar } from '@nextui-org/react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const UserButton = () => {
+    const pathname = usePathname();
+    const isTeacherPage = pathname?.includes('/teacher');
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -44,11 +48,12 @@ export const UserButton = () => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Profile</span>
-                        <DropdownMenuShortcut></DropdownMenuShortcut>
-                    </DropdownMenuItem>
+                    <Link href={isTeacherPage ? "/teacher/profile" : "/user/profile"}>
+                        <DropdownMenuItem className="cursor-pointer">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Profile</span>
+                        </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuItem>
                         <LayoutDashboardIcon className="mr-2 h-4 w-4" />
                         <span>Dashboard</span>
