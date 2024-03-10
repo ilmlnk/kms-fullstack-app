@@ -140,6 +140,7 @@ const groupsRoutes = [
 
 export const SidebarRoutes = () => {
     const pathname = usePathname();
+    const userId = pathname.split('/')[2];
 
     const isTeacherPage = pathname?.includes('/teacher');
     const isGuestPage = pathname?.includes('/user');

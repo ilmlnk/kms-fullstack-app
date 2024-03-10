@@ -15,33 +15,32 @@ datasource db {
 
 // Main 
 
-
 model Subject {
-  id              String       @id @default(uuid())
+  id              String    @id @default(uuid())
   object_id       String?
   author_id       String
   tenant_id       String
   creation_date   DateTime
-  updating_date   DateTime?     @updatedAt
-  deleted         Boolean?      @default(false)
+  updating_date   DateTime? @updatedAt
+  deleted         Boolean?  @default(false)
   version_counter BigInt?
   title           String
-  description     String?      @db.Text
-  image_url       String?      @db.Text
-  is_published    Boolean?      @default(false)
-  
-  category_id     String?
-  category        Category? @relation(fields: [category_id], references: [id])
-  
-  children        Child[]
-  attachments     Attachment[]
+  description     String?   @db.Text
+  image_url       String?   @db.Text
+  is_published    Boolean?  @default(false)
+
+  category_id String?
+  category    Category? @relation(fields: [category_id], references: [id])
+
+  children    Child[]
+  attachments Attachment[]
 
   @@index([category_id])
 }
 
 model Category {
-  id String @id @default(uuid())
-  name String @unique
+  id      String    @id @default(uuid())
+  name    String    @unique
   subject Subject[]
 }
 

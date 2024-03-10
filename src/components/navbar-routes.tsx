@@ -21,19 +21,19 @@ export const NavbarRoutes = () => {
 
 
     return (
-        <div className={`flex gap-x-2 ml-auto `}>
-            <NotificationMenu />
-            <ModeToggle />
+        <div className={`flex ml-auto `}>
+                <NotificationMenu />
+                <ModeToggle />
             {isTeacherPage ? (
                 <Link href="/user/dashboard">
-                    <Button variant="ghost">
+                    <Button className="ml-2 mr-2" variant="ghost">
                         <LogOut className="h-4 w-4 mr-2" />
                         Exit
                     </Button>
                 </Link>
             ) : (
-                <Link href="/teacher/dashboard">
-                    <Button variant="ghost" className="mr-4">
+                <Link href="/">
+                    <Button variant="ghost" className="ml-2 mr-2">
                         Teacher Mode
                     </Button>
                 </Link>
