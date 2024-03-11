@@ -47,7 +47,7 @@ const CreateSubjectPage = () => {
             router.push(`/teacher/subjects/${response.data.id}`);
             toast.success("Subject created");
         } catch (err) {
-            toast.error("Something went wrong")
+            toast.error("Something went wrong");
         }
     }
 

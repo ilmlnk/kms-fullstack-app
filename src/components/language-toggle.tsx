@@ -26,13 +26,13 @@ export function LanguageToggle() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => router.push("/uk")}>
-            Ukrainian
+            Українська
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push('/en')}>
             English
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push('/pl')}>
-            Polish
+            Polski
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

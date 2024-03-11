@@ -17,9 +17,7 @@ export async function POST(
     }
 
     try {
-        const { firstName } = await req.json();
-        const { lastName } = await req.json();
-        const { idCode } = await req.json();
+        const { first_name, last_name, username, password } = await req.json();
 
         const parent = await db.parent.create({
             data: {
@@ -27,14 +25,16 @@ export async function POST(
                 author_id: String(generateAuthorId()),
                 tenant_id: String(generateTenantId()),
                 creation_date: new Date(),
-                first_name: firstName,
-                last_name: lastName,
-                id_code: idCode
+                first_name: String(first_name),
+                last_name: String(last_name),
+                username: String(username),
+                password: String(password),
             }
-        });
+        })
 
         return NextResponse.json(parent);
     } catch (error) {
-
+        console.log('[PARENT]', error);
+        return new NextResponse("Internal Error", { status: 500 });
     }
 }

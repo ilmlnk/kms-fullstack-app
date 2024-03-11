@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,6 +21,7 @@ export function DialogWindow({
 }) {
   const pathname = usePathname();
   const language = pathname?.split("/")[1]; 
+  const t = useTranslations();
 
   return (
     <Dialog>
@@ -30,21 +32,27 @@ export function DialogWindow({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Who are you?</DialogTitle>
+          <DialogTitle>
+            {/*Who are you?*/}
+            {t('landing-page.header.signup-dialog.heading')}
+            </DialogTitle>
           <DialogDescription>
-            Choose who you are to start registration process.
+            {/*Choose who you are to start registration process.*/}
+            {t('landing-page.header.signup-dialog.description')}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <Button variant="outline">
             <Link href={`${language}/sign-up`} className="w-full">
-              I&apos;m a Parent
+              {/* I'm a Parent */}
+              {t('landing-page.header.signup-dialog.parent')}
             </Link>
           </Button>
 
           <Button variant="outline">
             <Link href={`${language}/teacher-register`} className="w-full">
-              I&apos;m a Teacher
+              {/*I&apos;m a Teacher*/}
+              {t('landing-page.header.signup-dialog.teacher')}
             </Link>
           </Button>
 

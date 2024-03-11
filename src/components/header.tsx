@@ -83,7 +83,7 @@ export default function Header() {
                     <Popover className="relative">
                         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                             {/* Product */}
-                            <p>{t('header.product')}</p>
+                            <p>{t('landing-page.header.product')}</p>
                             <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                         </Popover.Button>
 
@@ -120,14 +120,15 @@ export default function Header() {
                         </Transition>
                     </Popover>
 
-                    <Link href="/marketplace" className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
+                    <Link href={`${language}/marketplace`} className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
                         {/* Marketplace */}
-                        {t('header.marketplace')}
+                        {t('landing-page.header.marketplace')}
                     </Link>
 
                     <Popover className="relative">
                         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
-                            Community & Support
+                            {/*Community & Support*/}
+                            {t('landing-page.header.community-support')}
                             <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                         </Popover.Button>
 
@@ -165,7 +166,8 @@ export default function Header() {
                     </Popover>
 
                     <a href="/company" className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
-                        Company
+                        {/* Company */} 
+                        {t('landing-page.header.company')}
                     </a>
                 </Popover.Group>
 
@@ -174,12 +176,12 @@ export default function Header() {
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
                     <DialogWindow>
                         {/* Sign up */}
-                        {t('header.signup')}
+                        {t('landing-page.header.signup')}
                     </DialogWindow>
                     <Link href={`${language}/sign-in`} className="text-sm font-semibold leading-6 pl-2 pr-2">
                         <Button variant="outline" className='ml-4 hover:border-blue-500 hover:text-white hover:bg-blue-500 transition duration-200'>
                             {/* Log in */}
-                            {t('header.login')}
+                            {t('landing-page.header.login')}
                         </Button>
                     </Link>
                 </div>
@@ -253,7 +255,7 @@ export default function Header() {
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     {/* Log in */}
-                                    {t('header.login')}
+                                    {t('landing-page.header.login')}
                                 </Link>
                             </div>
                         </div>

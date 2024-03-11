@@ -69,7 +69,7 @@ model Parent {
   version_counter BigInt?
   first_name      String
   last_name       String
-  id_code         String
+  id_code         String?
   birth_date      DateTime?
   email           String?
   username        String?
