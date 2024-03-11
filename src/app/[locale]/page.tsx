@@ -6,7 +6,9 @@ import LandingContent from "@/components/landing-content";
 export default function Home() {
   return (
     <div>
+      <Header/>
       <LandingContent/>
+      <Footer/>
     </div>
   );
 }

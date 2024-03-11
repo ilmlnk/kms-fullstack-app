@@ -24,9 +24,12 @@ import { ModeToggle } from './theme-toggle'
 import { DialogWindow } from './dialog-window'
 import { GlobeIcon } from 'lucide-react'
 import { LanguageToggle } from './language-toggle'
+import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
 
 const products = [
-    { name: 'KinderSprout IT Services', description: 'Empowering your digital presence with insightful traffic analytics', href: '/enrollment', icon: ServerStackIcon },
+    { name: 'KinderSprout IT Services', 
+    description: 'Empowering your digital presence with insightful traffic analytics', href: '/enrollment', icon: ServerStackIcon },
     { name: 'Technology Solutions', description: 'Enhance direct communication with your customers', href: '/special-programs', icon: WrenchScrewdriverIcon },
     { name: 'User Research', description: 'Uncover valuable insights and enhance user experiences through meticulous research and analysis.', href: '/gradebook', icon: MagnifyingGlassCircleIcon },
     { name: 'Document management', description: 'Connect with third-party tools', href: '/document-management', icon: SquaresPlusIcon },
@@ -51,7 +54,10 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 }
 
 export default function Header() {
+    const t = useTranslations();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const language = pathname?.split('/')[1]
 
     return (
         <header className="">
@@ -67,14 +73,17 @@ export default function Header() {
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                         onClick={() => setMobileMenuOpen(true)}
                     >
-                        <span className="sr-only">Open main menu</span>
+                        <span className="sr-only">
+                            Open main menu
+                        </span>
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
                         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
-                            Product
+                            {/* Product */}
+                            <p>{t('header.product')}</p>
                             <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                         </Popover.Button>
 
@@ -112,7 +121,8 @@ export default function Header() {
                     </Popover>
 
                     <Link href="/marketplace" className="text-sm font-semibold leading-6 hover:text-blue-500 transition duration-200">
-                        Marketplace
+                        {/* Marketplace */}
+                        {t('header.marketplace')}
                     </Link>
 
                     <Popover className="relative">
@@ -158,16 +168,18 @@ export default function Header() {
                         Company
                     </a>
                 </Popover.Group>
-                
-                <LanguageToggle/>
+
+                <LanguageToggle />
                 <ModeToggle />
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
                     <DialogWindow>
-                        Sign Up
+                        {/* Sign up */}
+                        {t('header.signup')}
                     </DialogWindow>
-                    <Link href="/sign-in" className="text-sm font-semibold leading-6 pl-2 pr-2">
+                    <Link href={`${language}/sign-in`} className="text-sm font-semibold leading-6 pl-2 pr-2">
                         <Button variant="outline" className='ml-4 hover:border-blue-500 hover:text-white hover:bg-blue-500 transition duration-200'>
-                            Log in
+                            {/* Log in */}
+                            {t('header.login')}
                         </Button>
                     </Link>
                 </div>
@@ -240,7 +252,8 @@ export default function Header() {
                                     href="/sign-in"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Log in
+                                    {/* Log in */}
+                                    {t('header.login')}
                                 </Link>
                             </div>
                         </div>

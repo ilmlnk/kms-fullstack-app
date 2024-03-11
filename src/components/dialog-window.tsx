@@ -11,12 +11,16 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function DialogWindow({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname();
+  const language = pathname?.split("/")[1]; 
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -33,13 +37,13 @@ export function DialogWindow({
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <Button variant="outline">
-            <Link href="/sign-up" className="w-full">
+            <Link href={`${language}/sign-up`} className="w-full">
               I&apos;m a Parent
             </Link>
           </Button>
 
           <Button variant="outline">
-            <Link href="/teacher-register" className="w-full">
+            <Link href={`${language}/teacher-register`} className="w-full">
               I&apos;m a Teacher
             </Link>
           </Button>

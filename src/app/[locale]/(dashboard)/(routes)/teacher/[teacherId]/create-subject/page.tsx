@@ -45,7 +45,7 @@ const CreateSubjectPage = () => {
         try {
             const response = await axios.post('/api/subjects', values);
             router.push(`/teacher/subjects/${response.data.id}`);
-            toast.success("Course created");
+            toast.success("Subject created");
         } catch (err) {
             toast.error("Something went wrong")
         }

@@ -1,6 +1,6 @@
 {
     "header": {
-        "product": "Product",
+        "product": "Produkt",
         "product-dropdown": {
             "it-services": "KinderSprout IT Services",
             "it-services-description": {
@@ -11,16 +11,16 @@
                 "description": "Enhance direct communication with your customers"
             }
         },
-        "marketplace": "Marketplace",
-        "community-support": "Community & Support",
+        "marketplace": "Маркетплейс",
+        "community-support": "Спільнота та підтримка",
         "community-support-dropdown": {
-            "enrollment": "Enrollment"
+            "enrollment": "Залучення"
         },
-        "signup": "Sign Up",
-        "login": "Log In"
+        "signup": "Zarejestruj się",
+        "login": "Zaloguj się"
     },
     "landing": {
-        "hero-subtext": "Empowering Tomorrow's Leaders, One Nursery at a Time!",
-        "hero-button": "Get Started"
+        "hero-subtext": "Umocnij liderów jutra, jedno żłobek na raz!",
+        "hero-button": "Zaczynajmy!"
     }
 }

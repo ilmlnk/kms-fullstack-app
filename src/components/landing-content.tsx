@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { Avatar } from "./ui/avatar";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Carousel } from "./carousel";
+import { useTranslations } from "next-intl";
 
 const notifications = [
     {
@@ -49,6 +50,7 @@ const teamUsers = [
 type CardProps = React.ComponentProps<typeof Card>
 
 const LandingContent = () => {
+    const t = useTranslations();
 
     const updatedTeamUsers = teamUsers.map(user => {
         const fallback = `${user.firstName[0]}${user.lastName[0] || user.firstName[0]}`;
@@ -63,10 +65,14 @@ const LandingContent = () => {
                         <h1 className="font-semibold text-6xl">
                             KinderSprout
                         </h1>
-                        <p className="mt-4 text-2xl">Empowering Tomorrow&apos;s Leaders, One Nursery at a Time!</p>
+                        <p className="mt-4 text-2xl">
+                            {/*Empowering Tomorrow&apos;s Leaders, One Nursery at a Time!*/}
+                            {t('landing.hero-subtext')}
+                        </p>
                         <Button className={cn("mt-8")}>
                             <Link href='/child-register'>
-                                Get Started
+                                {/* Get Started */}
+                                {t('landing.hero-button')}
                             </Link>
                         </Button>
                     </div>

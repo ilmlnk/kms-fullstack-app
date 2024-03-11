@@ -65,15 +65,15 @@ model Parent {
   author_id       String
   tenant_id       String
   creation_date   DateTime
-  deleted         Boolean
-  version_counter BigInt
+  deleted         Boolean?
+  version_counter BigInt?
   first_name      String
   last_name       String
   id_code         String
-  birth_date      DateTime
-  email           String
-  username        String
-  password        String
+  birth_date      DateTime?
+  email           String?
+  username        String?
+  password        String?
   Child           Child?   @relation(fields: [childId], references: [id])
   childId         String?
 }

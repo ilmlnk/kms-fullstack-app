@@ -11,9 +11,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useRouter } from "next/navigation"
 
 export function LanguageToggle() {
-    const { setTheme } = useTheme();
+    const router = useRouter();
   
     return (
       <DropdownMenu>
@@ -24,13 +25,13 @@ export function LanguageToggle() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>
+          <DropdownMenuItem onClick={() => router.push("/uk")}>
             Ukrainian
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <DropdownMenuItem onClick={() => router.push('/en')}>
             English
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>
+          <DropdownMenuItem onClick={() => router.push('/pl')}>
             Polish
           </DropdownMenuItem>
         </DropdownMenuContent>

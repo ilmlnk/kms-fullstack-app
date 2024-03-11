@@ -33,20 +33,20 @@ const RootLayout = ({
     <>
       <html lang={locale} suppressHydrationWarning>
         <head />
-
         <body className={inter.className}>
-          <ToastProvider />
-          <NextIntlClientProvider messages={messages}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ToastProvider />
+            <NextIntlClientProvider messages={messages}>
               {children}
-            </ThemeProvider>
-          </NextIntlClientProvider>
+            </NextIntlClientProvider>
+          </ThemeProvider>
         </body>
+
       </html>
     </>
   );
