@@ -11,14 +11,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useTranslations } from "next-intl"
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
+  const t = useTranslations();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="ml-16" variant="outline" size="icon">
+        <Button className="ml-4 mr-8" variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
@@ -26,13 +28,16 @@ export function ModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
+          {/*Light*/}
+          {t('landing-page.header.toggle-mode.light-mode')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
+          {/*Dark*/}
+          {t('landing-page.header.toggle-mode.dark-mode')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
+          {/*System*/}
+          {t('landing-page.header.toggle-mode.system-mode')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,0 +1,62 @@
+{
+    "landing-page": {
+        "header": {
+            "product": "Produkt",
+            "product-dropdown": {
+                "it-services": "IT Сервіси KinderSprout",
+                "it-services-description": {
+                    "description": "Empowering your digital presence with insightful traffic analytics"
+                },
+                "it-solutions": "Technology Solutions",
+                "it-solutions-description": {
+                    "description": "Enhance direct communication with your customers"
+                }
+            },
+            "marketplace": "Маркетплейс",
+            "community-support": "Спільнота та підтримка",
+            "community-support-dropdown": {
+                "enrollment": "Залучення"
+            },
+            "company": "Компанія",
+            "toggle-mode": {
+                "dark-mode": "Темна тема",
+                "light-mode": "Світла тема",
+                "system-mode": "Системна тема"
+            },
+            "signup": "Зареєструватися",
+            "signup-dialog": {
+                "heading": "Хто Ви?",
+                "description": "Оберіть хто Ви, щоб продовжити процес реєстрації",
+                "parent": "Я - родич",
+                "teacher": "Я - педагог"
+            },
+            "login": "Увійти"
+        },
+        "landing-content": {
+            "hero-subtext": "Розширення можливостей завтрашніх лідерів, по одному дитячому садку за раз!",
+            "hero-button": "Розпочинаймо!",
+            "functionality-chapter": {
+                "functionality-title": "Функціональність"
+            }
+        }
+    },
+    "login-page": {
+        "title": "Logowanie",
+        "username-or-email": "Nazwa użytkownika lub email",
+        "password": "Hasło",
+        "login-button": "Zaloguj"
+    },
+    "signup-page": {
+        "title": "Форма реєстрації",
+        "description": "Wprowadź swoje dane uwierzytelniające, aby rozpocząć pracę z aplikacją.",
+        "first-name": "Imię",
+        "last-name": "Nazwisko",
+        "id-code": "Kod PESEL",
+        "birth-date": "Data urodzenia",
+        "email": "Email",
+        "username": "Nazwa użytkownika",
+        "password": "Hasło",
+        "confirm-password": "Powtórz hasło",
+        "continue-button": "Dalej"
+    }
+}

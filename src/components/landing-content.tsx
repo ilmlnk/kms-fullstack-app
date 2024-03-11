@@ -19,6 +19,8 @@ import Link from 'next/link';
 import { Avatar } from "./ui/avatar";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Carousel } from "./carousel";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 
 const notifications = [
     {
@@ -49,6 +51,10 @@ const teamUsers = [
 type CardProps = React.ComponentProps<typeof Card>
 
 const LandingContent = () => {
+    const t = useTranslations();
+    const router = useRouter();
+    const pathname = usePathname();
+    const language = pathname?.split("/")[1];
 
     const updatedTeamUsers = teamUsers.map(user => {
         const fallback = `${user.firstName[0]}${user.lastName[0] || user.firstName[0]}`;
@@ -63,11 +69,13 @@ const LandingContent = () => {
                         <h1 className="font-semibold text-6xl">
                             KinderSprout
                         </h1>
-                        <p className="mt-4 text-2xl">Empowering Tomorrow&apos;s Leaders, One Nursery at a Time!</p>
-                        <Button className={cn("mt-8")}>
-                            <Link href='/child-register'>
-                                Get Started
-                            </Link>
+                        <p className="mt-4 text-lg">
+                            {/*Less time on tasks. More time for children.*/}
+                            {t('landing-page.landing-content.hero-subtext')}
+                        </p>
+                        <Button className={cn("mt-8")} onClick={() => router.push(`/${language}/sign-up`)}>
+                            {/* Get Started */}
+                            {t('landing-page.landing-content.hero-button')}
                         </Button>
                     </div>
                     <div className="row-span-2">
@@ -80,10 +88,13 @@ const LandingContent = () => {
                         />
                     </div>
                 </div>
-            </div>
+            </div >
 
             <div className=" pb-32">
-                <h1 className="text-center mb-8 text-5xl font-semibold">Functionality</h1>
+                <h1 className="text-center mb-8 text-5xl font-semibold">
+                    {/*Functionality*/}
+                    {t('landing-page.landing-content.functionality-chapter.functionality-title')}
+                </h1>
 
                 {/* Content */}
                 <div className="container pt-12">
@@ -145,7 +156,7 @@ const LandingContent = () => {
                 </div>
             </div>
 
-            <div className="bg-[#f4ede4] pt-32 pb-32">
+            <div className="bg-[#f4ede4] dark:bg-[#917755] pt-32 pb-32">
                 <h1 className="text-center mb-8 text-5xl font-semibold">Our Advantages</h1>
 
                 {/* Content */}
@@ -228,7 +239,7 @@ const LandingContent = () => {
                 </div>
             </div>
             <Testimonial />
-        </div>
+        </div >
     )
 }
 
