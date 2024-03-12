@@ -1,12 +1,14 @@
 "use client"
 
-import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon } from "lucide-react";
+import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, HandCoinsIcon, CalendarDaysIcon } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
-const guestRoutes = [
+
+/* PARENT SECTION */
+const parentRoutes = [
     {
         icon: Layout,
         label: "Dashboard",
@@ -24,62 +26,7 @@ const guestRoutes = [
     },
 ];
 
-const guestCourses = [
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
-    {
-        icon: FileArchiveIcon,
-        label: "Private Files",
-        href: "/private-files",
-    },
+const parentSubjects = [
     {
         icon: FileArchiveIcon,
         label: "Private Files",
@@ -96,6 +43,8 @@ const guestCourses = [
         href: "/private-files",
     },
 ];
+
+/* TEACHER SECTION */
 
 const teacherRoutes = [
     {
@@ -138,18 +87,53 @@ const groupsRoutes = [
     },
 ];
 
+/* ADMIN SECTION */
+const adminRoutes = [
+    {
+        icon: LayoutDashboardIcon,
+        label: "Dashboard",
+        href: "/admin/dashboard",
+    },
+    {
+        icon: FileCheck2Icon,
+        label: "Documents",
+        href: "/admin/documents",
+    },
+    {
+        icon: UsersRoundIcon,
+        label: "Group Management",
+        href: "/admin/group-management",
+    },
+    {
+        icon: UserCheckIcon,
+        label: "Verification",
+        href: "/admin/verification",
+    },
+    {
+        icon: CalendarDaysIcon,
+        label: "Manage Schedule",
+        href: "/admin/manage-schedule",
+    },
+    {
+        icon: HandCoinsIcon,
+        label: "Payments",
+        href: "/admin/payments",
+    },
+];
+
 export const SidebarRoutes = () => {
     const pathname = usePathname();
     const userId = pathname.split('/')[2];
 
     const isTeacherPage = pathname?.includes('/teacher');
-    const isGuestPage = pathname?.includes('/user');
+    const isParentPage = pathname?.includes('/user');
+    const isAdminPage = pathname?.includes('/admin');
 
-    const routes = isTeacherPage ? teacherRoutes : guestRoutes;
+    const routes = isTeacherPage ? teacherRoutes : isParentPage ? parentRoutes : isAdminPage ? adminRoutes : [];
 
     return (
         <div className="flex flex-col w-full">
-            {routes.map((route) => (
+            {routes.map((route: any) => (
                 <SidebarItem
                     key={route.href}
                     icon={route.icon}
@@ -180,10 +164,10 @@ export const SidebarRoutes = () => {
             }
 
             {
-                isGuestPage && (
+                isParentPage && (
                     <>
                         <Separator />
-                        {guestCourses.map((route) => (
+                        {parentSubjects.map((route) => (
                             <SidebarItem
                                 key={route.href}
                                 icon={route.icon}

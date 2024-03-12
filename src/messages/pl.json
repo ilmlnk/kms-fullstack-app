@@ -23,12 +23,13 @@
                 "light-mode": "Світла тема",
                 "system-mode": "Системна тема"
             },
-            "signup": "Зареєструватися",
+            "signup": "Zarejestruj",
             "signup-dialog": {
-                "heading": "Хто Ви?",
-                "description": "Оберіть хто Ви, щоб продовжити процес реєстрації",
-                "parent": "Я - родич",
-                "teacher": "Я - педагог"
+                "heading": "Kto Ty?",
+                "description": "Wybierz kim jestes, aby kontynuować proces rejestracji.",
+                "parent": "Jestem rodzicem",
+                "teacher": "Jestem pedagogiem",
+                "admin": "Jestem administratorem"
             },
             "login": "Увійти"
         },

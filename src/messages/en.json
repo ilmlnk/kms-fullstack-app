@@ -28,7 +28,8 @@
                 "heading": "Who are you?",
                 "description": "Choose who you are to continue registration process",
                 "parent": "I am a Parent",
-                "teacher": "I am a Teacher"
+                "teacher": "I am a Teacher",
+                "admin": "I am an Administrator"
             },
             "login": "Sign In"
         },

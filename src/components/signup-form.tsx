@@ -1,182 +1,275 @@
-"use client"
+'use client'
 
-import * as z from 'zod';
-import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-
-import {
-    Form,
-    FormLabel,
-    FormDescription,
-    FormControl,
-    FormField,
-    FormMessage,
-    FormItem,
-} from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import * as z from 'zod';
 import Link from 'next/link';
+import axios from 'axios';
+import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-const formSchema = z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-    username: z.string(),
-    password: z.string(),
-    confirmPassword: z.string(),
+import { Button } from "@/components/ui/button"
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { DateTimePicker } from './date-time-picker';
+import { ChevronLeftIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+
+const signUpSchema = z.object({
+    firstName: z.string()
+        .min(2, "Name should have at least 2 characters")
+        .max(50, "Name should not exceed 50 characters"),
+
+    lastName: z.string()
+        .min(2, "Name should have at least 2 characters")
+        .max(50, "Name should not exceed 50 characters"),
+
+    idCode: z.string()
+        .min(10, "ID code should have at least 10 characters"),
+
+
+    email: z.string()
+        .min(1, "Email is required")
+        .email("Email is not valid"),
+
+
+    username: z.string()
+        .min(1, "Username is required")
+        .max(50, "Username should not exceed 50 characters")
+        .refine((value) => /^[a-zA-Z0-9]+$/.test(value), "Username is not valid"),
+
+    password: z.string()
+        .min(1, "Password is required")
+        .min(8, "Password should have at least 8 characters")
+        .max(50, "Password should not exceed 50 characters"),
+
+    confirmPassword: z.string()
 
 });
 
 
 
-const SignUp = () => {
+export const SignUp = () => {
     const router = useRouter();
+    const pathname = usePathname();
+    const language = pathname.split('/')[1];
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const t = useTranslations();
+
+    const form = useForm<z.infer<typeof signUpSchema>>({
+        resolver: zodResolver(signUpSchema),
         defaultValues: {
             firstName: "",
             lastName: "",
+            idCode: "",
+            email: "",
             username: "",
             password: "",
             confirmPassword: "",
-        },
+        }
     });
 
     const { isSubmitting, isValid } = form.formState;
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof signUpSchema>) => {
         try {
             const response = await axios.post('/api/parents/register', values);
-            router.push(`/user/${response.data.id}/dashboard`);
-            toast.success("User registered");
+            router.push(`user/${response.data.id}/dashboard`);
         } catch (err) {
-            toast.error("500: Something went wrong");
+            console.log(err);
+            toast.error("Something went wrong");
         }
     }
 
     return (
-        <div className='max-w-5xl mx-auto flex md:items-center md:justify-center 
-        h-full p-6'>
-            <div>
-                <h1 className='text-2xl'>
-                    Profile
+        <div className='flex flex-col min-h-screen justify-center items-center '>
+            <Button className='absolute top-10 left-10 w-[50px] h-[50px]' onClick={() => router.back()}>
+                <ChevronLeftIcon />
+            </Button>
+            <div className='max-w-5xl mx-auto h-full p-[5rem] shadow-md rounded-md dark:bg-background dark:border-slate-500 dark:border dark:border-1'>
+                <h1 className='text-2xl font-bold'>
+                    {/* Registration form */}
+                    {t("signup-page.title")}
                 </h1>
                 <p className='text-sm text-slate-600'>
-                    What would you like to name your subject? Don&apos;t worry,
-                    you can change this later.
+                    {/*Input your credentials to start work with application.*/}
+                    {t("signup-page.description")}
                 </p>
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
-                        className='space-y-8 mt-8'
+                        className='mt-8'
                     >
-                        <FormField
-                            control={form.control}
-                            name="firstName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        First Name
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            disabled={isSubmitting}
-                                            placeholder='e.g. Alphabets and phonetics'
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <div className='grid grid-cols-2 gap-4'>
+                            <FormField
+                                control={form.control}
+                                name="firstName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*First name*/}
+                                            {t("signup-page.first-name")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-first-name')}
+                                                {...field}
+                                            />
 
-                        <FormField
-                            control={form.control}
-                            name="lastName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        Last Name
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            disabled={isSubmitting}
-                                            placeholder='e.g. Alphabets and phonetics'
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="username"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        Username
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            disabled={isSubmitting}
-                                            placeholder='e.g. Alphabets and phonetics'
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        Password
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type='password'
-                                            disabled={isSubmitting}
-                                            placeholder='e.g. Alphabets and phonetics'
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="confirmPassword"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        Confirm Password
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type='password'
-                                            disabled={isSubmitting}
-                                            placeholder='e.g. Alphabets and phonetics'
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <div className='flex items-center gap-x-2'>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="lastName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Last name*/}
+                                            {t("signup-page.last-name")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-last-name')}
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="idCode"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*ID code*/}
+                                            {t("signup-page.id-code")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder='0123456789'
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Email*/}
+                                            {t("signup-page.email")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder='example@kindersprout.com'
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="username"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Username*/}
+                                            {t("signup-page.username")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-username')}
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="password"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Password*/}
+                                            {t("signup-page.password")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type='password'
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-password')}
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="confirmPassword"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Confirm Password*/}
+                                            {t("signup-page.confirm-password")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type='password'
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-confirm-password')}
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+
+                        <div className='grid items-center gap-x-2 mt-4'>
                             <Button
                                 type='submit'
-                                disabled={!isValid || isSubmitting}
                             >
-                                Continue
+                                {/*Continue*/}
+                                {t("signup-page.submit")}
                             </Button>
                         </div>
                     </form>
@@ -185,5 +278,3 @@ const SignUp = () => {
         </div>
     );
 }
-
-export default SignUp;

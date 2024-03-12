@@ -43,9 +43,7 @@ export const LoginAccount = () => {
     const onSubmit = async (values: z.infer<typeof signUpSchema>) => {
         try {
             const response = await axios.post('/api/parents/login', values);
-            console.log(response.data);
-            router.push(`${language}/user/${response.data.id}/dashboard`);
-            toast.success('Login successful');
+            router.push(`user/${response.data.id}/dashboard`);
         } catch (err) {
             toast.error("Something went wrong");
         }

@@ -22,22 +22,8 @@ export const NavbarRoutes = () => {
 
     return (
         <div className={`flex ml-auto `}>
-                <NotificationMenu />
-                <ModeToggle />
-            {isTeacherPage ? (
-                <Link href="/user/dashboard">
-                    <Button className="ml-2 mr-2" variant="ghost">
-                        <LogOut className="h-4 w-4 mr-2" />
-                        Exit
-                    </Button>
-                </Link>
-            ) : (
-                <Link href="/">
-                    <Button variant="ghost" className="ml-2 mr-2">
-                        Teacher Mode
-                    </Button>
-                </Link>
-            )}
+            <NotificationMenu />
+            <ModeToggle />
             <UserButton />
         </div>
     );

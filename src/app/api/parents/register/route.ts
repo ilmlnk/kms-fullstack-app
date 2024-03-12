@@ -17,7 +17,15 @@ export async function POST(
     }
 
     try {
-        const { first_name, last_name, username, password } = await req.json();
+        const {
+            first_name,
+            last_name,
+            id_code, 
+            email,
+            username,
+            password
+        } = await req.json();
+
 
         const parent = await db.parent.create({
             data: {
@@ -27,6 +35,8 @@ export async function POST(
                 creation_date: new Date(),
                 first_name: String(first_name),
                 last_name: String(last_name),
+                id_code: String(id_code),
+                email: String(email),
                 username: String(username),
                 password: String(password),
             }

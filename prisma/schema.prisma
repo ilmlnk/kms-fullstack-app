@@ -34,8 +34,30 @@ model Subject {
 
   children    Child[]
   attachments Attachment[]
+  Event       Event[]
 
   @@index([category_id])
+}
+
+model Event {
+  id              String    @id @default(uuid())
+  object_id       String
+  author_id       String
+  tenant_id       String
+  creation_date   DateTime
+  updating_date   DateTime? @updatedAt
+  deleted         Boolean?  @default(false)
+  version_counter BigInt?
+  title           String
+  subject         Subject?  @relation(fields: [subjectId], references: [id])
+  subjectId       String?
+  starting_date   DateTime
+  ending_date     DateTime
+  type            String?
+  description     String?
+  teacher         Teacher?   @relation(fields: [teacherId], references: [id])
+  teacherId       String?
+  group           String?
 }
 
 model Category {
@@ -57,10 +79,11 @@ model Teacher {
   email           String
   username        String
   password        String
+  Event           Event[]
 }
 
 model Parent {
-  id              String   @id @default(uuid())
+  id              String    @id @default(uuid())
   object_id       String
   author_id       String
   tenant_id       String
@@ -74,7 +97,7 @@ model Parent {
   email           String?
   username        String?
   password        String?
-  Child           Child?   @relation(fields: [childId], references: [id])
+  Child           Child?    @relation(fields: [childId], references: [id])
   childId         String?
 }
 

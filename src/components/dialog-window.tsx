@@ -51,7 +51,14 @@ export function DialogWindow({
 
           <Button variant="outline">
             <Link href={`${language}/teacher-register`} className="w-full">
-              {/*I&apos;m a Teacher*/}
+              {/*I'm a Teacher*/}
+              {t('landing-page.header.signup-dialog.teacher')}
+            </Link>
+          </Button>
+
+          <Button variant="outline">
+            <Link href={`${language}/admin-register`} className="w-full">
+              {/*I'm an Admin*/}
               {t('landing-page.header.signup-dialog.teacher')}
             </Link>
           </Button>
