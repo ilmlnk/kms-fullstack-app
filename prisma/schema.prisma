@@ -54,3 +54,139 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+
+model Subject {
+  id              String    @id @default(uuid()) @map("_id")
+  object_id       String?
+  author_id       String?
+  tenant_id       String?
+  creation_date   DateTime?
+  updating_date   DateTime? @updatedAt
+  deleted         Boolean?  @default(false)
+  version_counter BigInt?
+  title           String?
+  description     String?   @db.Text
+  image_url       String?   @db.Text
+  is_published    Boolean?  @default(false)
+
+  category_id String?
+  category    Category? @relation(fields: [category_id], references: [id])
+
+  children    Child[]
+  attachments Attachment[]
+  Event       Event[]
+
+  @@index([category_id])
+}
+
+model Event {
+  id              String    @id @default(uuid()) @map("_id")
+  object_id       String?
+  author_id       String?
+  tenant_id       String?
+  creation_date   DateTime
+  updating_date   DateTime? @updatedAt
+  deleted         Boolean?  @default(false)
+  version_counter BigInt?
+  title           String?
+  subject         Subject?  @relation(fields: [subjectId], references: [id])
+  subjectId       String?
+  starting_date   DateTime?
+  ending_date     DateTime?
+  type            String?
+  description     String?
+  teacher         Teacher?  @relation(fields: [teacherId], references: [id])
+  teacherId       String?
+  group           String?
+}
+
+model Category {
+  id      String    @id @default(uuid())
+  name    String?   @unique
+  subject Subject[]
+}
+
+model Attachment {
+  id   String  @id @default(uuid())
+  name String?
+  url  String? @db.Text
+
+  subject_id String?
+  subject    Subject? @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+
+  @@index([subject_id])
+}
+
+model Teacher {
+  id               String          @id @default(uuid()) @map("_id")
+  object_id        String?
+  author_id        String?
+  tenant_id        String?
+  creation_date    DateTime?
+  deleted          Boolean?
+  version_counter  BigInt?
+  first_name       String?
+  last_name        String?
+  email            String?
+  username         String?
+  password         String?
+  Event            Event[]
+  verified         Boolean?
+}
+
+model Parent {
+  id               String          @id @default(uuid()) @map("_id")
+  object_id        String?
+  author_id        String?
+  tenant_id        String?
+  creation_date    DateTime?
+  deleted          Boolean?
+  version_counter  BigInt?
+  first_name       String?
+  last_name        String?
+  id_code          String?
+  birth_date       DateTime?
+  email            String?
+  username         String?
+  hashedPassword   String?
+  Child            Child?          @relation(fields: [childId], references: [id])
+  childId          String?
+}
+
+
+model Child {
+  id              String    @id @default(uuid())
+  object_id       String?
+  author_id       String?
+  tenant_id       String?
+  creation_date   DateTime?
+  deleted         Boolean?
+  version_counter BigInt?
+  first_name      String?
+  last_name       String?
+  parents         Parent[]
+  subject         Subject?  @relation(fields: [subjectId], references: [id])
+  subjectId       String?
+  verified        Boolean?
+}
+
+model Administrator {
+  id              String    @id @default(uuid())
+  object_id       String?
+  author_id       String?
+  tenant_id       String?
+  creation_date   DateTime?
+  deleted         Boolean?
+  version_counter BigInt?
+  email           String?
+  username        String?
+  password        String?
+}
+
+model Payment {
+  id              String    @id @default(uuid())
+}

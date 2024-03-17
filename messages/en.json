@@ -1,0 +1,44 @@
+{
+    "landing-page": {
+        "header": {
+            "product": "Product",
+            "product-dropdown": {
+                "it-services": "KinderSprout IT Services",
+                "it-services-description": {
+                    "description": "Empowering your digital presence with insightful traffic analytics"
+                },
+                "it-solutions": "Technology Solutions",
+                "it-solutions-description": {
+                    "description": "Enhance direct communication with your customers"
+                }
+            },
+            "marketplace": "Marketplace",
+            "community-support": "Community & Support",
+            "community-support-dropdown": {
+                "enrollment": "Enrollment"
+            },
+            "company": "Company",
+            "toggle-mode": {
+                "dark-mode": "Темна тема",
+                "light-mode": "Світла тема",
+                "system-mode": "Системна тема"
+            },
+            "signup": "Sign Up",
+            "signup-dialog": {
+                "heading": "Who are you?",
+                "description": "Choose who you are to continue registration process",
+                "parent": "I am a Parent",
+                "teacher": "I am a Teacher",
+                "admin": "I am an Administrator"
+            },
+            "login": "Sign In"
+        },
+        "landing-content": {
+            "hero-subtext": "Розширення можливостей завтрашніх лідерів, по одному дитячому садку за раз!",
+            "hero-button": "Get Started"
+        }
+    },
+    "login-page": {
+        "title": ""
+    }
+}
