@@ -1,6 +1,7 @@
 'use client'
 
 
+import AddChildrenForm from "@/components/children/add-children-form";
 import { Button } from "@/components/ui/button"
 import { ChevronLeftIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -18,6 +19,7 @@ export default function AddChildrenPage() {
                 <ChevronLeftIcon />
             </Button>
             <h2 className="mt-4">Add Children Page</h2>
+            <AddChildrenForm/>
         </div >
     )
 }

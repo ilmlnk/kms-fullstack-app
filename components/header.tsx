@@ -178,7 +178,7 @@ export default function Header() {
                         {/* Sign up */}
                         {t('landing-page.header.signup')}
                     </DialogWindow>
-                    <Link href={`${language}/sign-in`} className="text-sm font-semibold leading-6 pl-2 pr-2">
+                    <Link href={`${language}/login`} className="text-sm font-semibold leading-6 pl-2 pr-2">
                         <Button variant="outline" className='ml-4 hover:border-blue-500 hover:text-white hover:bg-blue-500 transition duration-200'>
                             {/* Log in */}
                             {t('landing-page.header.login')}

@@ -1,6 +1,18 @@
 import prisma from "@/app/utils/db";
 import { NextResponse } from "next/server";
 
+export async function GET(
+    req: Request) {
+
+    try {
+        const subjects = await prisma.subject.findMany();
+        return NextResponse.json(subjects);
+    } catch (error) {
+        console.log('[SUBJECTS]', error);
+        return new NextResponse("Internal Error", { status: 500 });
+    }
+}
+
 export async function POST(
     req: Request,
 ) {
