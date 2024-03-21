@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { ChevronLeftIcon } from 'lucide-react';
+import { signIn } from 'next-auth/react';
 
 const signUpSchema: any = z.object({
     username: z.string(),
@@ -42,8 +43,13 @@ export const LoginAccount = () => {
 
     const onSubmit = async (values: z.infer<typeof signUpSchema>) => {
         try {
-            const response = await axios.post('/api/parents/login', values);
-            router.push(`user/${response.data.id}/dashboard`);
+            const signInData = await signIn('credentials', {
+                username: values.username,
+                password: values.password,
+            });
+            if (signInData?.ok) {
+                toast.success("Login successful");
+            }
         } catch (err) {
             toast.error("Something went wrong");
         }
@@ -60,6 +66,7 @@ export const LoginAccount = () => {
                 </h1>
                 <p className='text-sm text-slate-600 dark:text-slate-500'>
                     {/*Welcome back :)*/}
+                    Welcome back :)
                 </p>
                 <Form {...form}>
                     <form

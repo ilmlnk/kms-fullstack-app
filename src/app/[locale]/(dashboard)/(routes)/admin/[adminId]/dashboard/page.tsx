@@ -12,17 +12,6 @@ import axios from "axios";
 export default function DashboardPage() {
     const router = useRouter();
 
-    const loadEvents = async () => {
-        try {
-            const response = await axios.get('/api/events');
-            
-        } catch (err) {
-            console.error(err);
-            toast.error('Failed to load events');
-        }
-    };
-
-    const upcomingEvents = loadEvents();
 
     return (
         <div className="p-12">

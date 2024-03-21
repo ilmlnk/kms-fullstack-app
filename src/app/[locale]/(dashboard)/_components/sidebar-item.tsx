@@ -38,11 +38,10 @@ export const SidebarItem = ({
         >
             <div className="flex items-center gap-x-2 py-4">
                 <Icon
-                    size={22}
-                    className={cn(
-                        "text-slate-500 dark:text-slate-300",
-                        isActive && "text-sky-700 dark:text-sky-500"
-                    )}
+                size={22}
+                className={cn(
+                    "text-slate-500 dark:text-slate-300",
+                )}
                 />
                 {label}
             </div>
@@ -54,3 +53,16 @@ export const SidebarItem = ({
         </button>
     );
 }
+
+{/**
+<Icon
+                    size={22}
+                    className={cn(
+                        "text-slate-500 dark:text-slate-300",
+                        isActive && "text-sky-700 dark:text-sky-500"
+                    )}
+                    />
+
+
+
+*/}

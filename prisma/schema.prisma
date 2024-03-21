@@ -16,145 +16,158 @@ datasource db {
 // Main 
 
 model Subject {
-  id              String    @id @default(uuid())
-  object_id       String?
-  author_id       String
-  tenant_id       String
+  id              Int       @id @default(autoincrement())
+  object_id       String?   @unique
+  author_id       String    @unique
+  tenant_id       String    @unique
   creation_date   DateTime
   updating_date   DateTime? @updatedAt
   deleted         Boolean?  @default(false)
-  version_counter BigInt?
+  version_counter Int?
   title           String
-  description     String?   @db.Text
-  image_url       String?   @db.Text
+  description     String?
+  image_url       String?
   is_published    Boolean?  @default(false)
 
   category_id String?
-  category    Category? @relation(fields: [category_id], references: [id])
+  category    Category? @relation(fields: [categoryId], references: [id])
 
   children    Child[]
   attachments Attachment[]
   Event       Event[]
+  categoryId  Int?
 
   @@index([category_id])
 }
 
 model Event {
-  id              String    @id @default(uuid())
-  object_id       String
-  author_id       String
-  tenant_id       String
+  id              Int       @id @default(autoincrement())
+  object_id       String    @unique
+  author_id       String    @unique
+  tenant_id       String    @unique
   creation_date   DateTime
   updating_date   DateTime? @updatedAt
   deleted         Boolean?  @default(false)
-  version_counter BigInt?
+  version_counter Int?
   title           String
   subject         Subject?  @relation(fields: [subjectId], references: [id])
-  subjectId       String?
+  subjectId       Int?
   starting_date   DateTime
   ending_date     DateTime
   type            String?
   description     String?
-  teacher         Teacher?   @relation(fields: [teacherId], references: [id])
-  teacherId       String?
+  teacher         Teacher?  @relation(fields: [teacherId], references: [id])
+  teacherId       Int?
   group           String?
 }
 
 model Category {
-  id      String    @id @default(uuid())
+  id      Int       @id @default(autoincrement())
   name    String    @unique
   subject Subject[]
 }
 
 model Teacher {
-  id              String   @id @default(uuid())
-  object_id       String
-  author_id       String
-  tenant_id       String
-  creation_date   DateTime
-  deleted         Boolean
-  version_counter BigInt
-  first_name      String
-  last_name       String
-  email           String
-  username        String
-  password        String
-  Event           Event[]
+  id                 Int      @id @default(autoincrement())
+  object_id          String   @unique
+  author_id          String   @unique
+  tenant_id          String   @unique
+  creation_date      DateTime
+  deleted            Boolean
+  version_counter    Int?
+  first_name         String
+  last_name          String
+  email              String   @unique
+  phone_number       String   @unique
+  username           String   @unique
+  encrypted_password String
+  Event              Event[]
+  User               User[]
 }
 
 model Parent {
-  id              String    @id @default(uuid())
-  object_id       String
-  author_id       String
-  tenant_id       String
-  creation_date   DateTime
-  deleted         Boolean?
-  version_counter BigInt?
-  first_name      String
-  last_name       String
-  id_code         String?
-  birth_date      DateTime?
-  email           String?
-  username        String?
-  password        String?
-  Child           Child?    @relation(fields: [childId], references: [id])
-  childId         String?
+  id                 Int       @id @default(autoincrement())
+  object_id          String?   @unique
+  author_id          String?   @unique
+  tenant_id          String?   @unique
+  creation_date      DateTime?
+  deleted            Boolean?
+  version_counter    Int?
+  first_name         String?
+  last_name          String?
+  id_code            String?    
+  email              String?    
+  phone_number       String?    
+  username           String?    
+  encrypted_password String?
+  Child              Child?    @relation(fields: [childId], references: [id])
+  childId            Int?
+  User               User[]
 }
 
 model Child {
-  id              String   @id @default(uuid())
+  id              Int      @id @default(autoincrement())
   object_id       String
   author_id       String
   tenant_id       String
   creation_date   DateTime
   deleted         Boolean
-  version_counter BigInt
+  version_counter Int?
   first_name      String
   last_name       String
   parents         Parent[]
   subject         Subject? @relation(fields: [subjectId], references: [id])
-  subjectId       String?
+  subjectId       Int
 }
 
 model Administrator {
-  id              String   @id @default(uuid())
-  object_id       String
-  author_id       String
-  tenant_id       String
-  creation_date   DateTime
-  deleted         Boolean
-  version_counter BigInt
-  email           String
-  username        String
-  password        String
+  id                 Int      @id @default(autoincrement())
+  object_id          String   @unique
+  author_id          String   @unique
+  tenant_id          String   @unique
+  creation_date      DateTime
+  deleted            Boolean
+  version_counter    BigInt?
+  email              String   @unique
+  username           String   @unique
+  phone_number       String   @unique
+  encrypted_password String
+  User               User[]
 }
 
-model Address {
-  id               String   @id @default(uuid())
-  object_id        String
-  author_id        String
-  tenant_id        String
-  creation_date    DateTime
-  deleted          Boolean
-  version_counter  BigInt
-  district         String
-  city             String
-  street           String
-  house_number     String
-  apartment_number String
-  postal_code      String
+model User {
+  id              Int      @id @default(autoincrement())
+  object_id       String   @unique
+  author_id       String   @unique
+  tenant_id       String   @unique
+  creation_date   DateTime
+  deleted         Boolean
+  version_counter Int?
+  email           String?   
+  phone_number    String?   
+  role            String
+  username        String 
+  password        String
+
+  parent          Parent?        @relation(fields: [parentId], references: [id])
+  administrator   Administrator? @relation(fields: [administratorId], references: [id])
+  teacher         Teacher?       @relation(fields: [teacherId], references: [id])
+  parentId        Int?
+  administratorId Int?
+  teacherId       Int?
 }
 
 model Attachment {
-  id   String @id @default(uuid())
+  id   Int    @id @default(autoincrement())
   name String
-  url  String @db.Text
+  url  String
 
-  subject_id String
-  subject    Subject @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  subject_id Int
+  subject    Subject? @relation(fields: [subjectId], references: [id])
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  subjectId  Int?
 
   @@index([subject_id])
 }

@@ -20,10 +20,24 @@ import { SmilePlusIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const ChildrenPage = () => {
     const pathname = usePathname();
     const userId = pathname.split("/")[2];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/children');
+            } catch (error) {
+                toast.error('Something went wrong');
+            }
+        }
+    }, []);
+
     return (
         <div className='p-8'>
             <div>

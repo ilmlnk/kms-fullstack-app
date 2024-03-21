@@ -1,6 +1,6 @@
 "use client"
 
-import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, HandCoinsIcon, CalendarDaysIcon } from "lucide-react";
+import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, CoinsIcon, CalendarDaysIcon } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -92,32 +92,32 @@ const adminRoutes = [
     {
         icon: LayoutDashboardIcon,
         label: "Dashboard",
-        href: "/admin/dashboard",
+        href: "dashboard",
     },
     {
         icon: FileCheck2Icon,
         label: "Documents",
-        href: "/admin/documents",
+        href: "documents",
     },
     {
         icon: UsersRoundIcon,
         label: "Group Management",
-        href: "/admin/group-management",
+        href: "group-management",
     },
     {
         icon: UserCheckIcon,
         label: "Verification",
-        href: "/admin/verification",
+        href: "verification",
     },
     {
         icon: CalendarDaysIcon,
         label: "Manage Schedule",
-        href: "/admin/manage-schedule",
+        href: "manage-schedule",
     },
     {
-        icon: HandCoinsIcon,
+        icon: CoinsIcon,
         label: "Payments",
-        href: "/admin/payments",
+        href: "payments",
     },
 ];
 
@@ -133,6 +133,7 @@ export const SidebarRoutes = () => {
 
     return (
         <div className="flex flex-col w-full">
+            <h2 className="uppercase text-sm ml-2 p-2 text-slate-400">Pages</h2>
             {routes.map((route: any) => (
                 <SidebarItem
                     key={route.href}
@@ -146,6 +147,8 @@ export const SidebarRoutes = () => {
                 isTeacherPage && (
                     <>
                         <Separator />
+                        <h2 className="uppercase text-sm ml-2 p-2 text-slate-400">Groups</h2>
+
                         {
                             groupsRoutes.length > 0 && (
                                 groupsRoutes.map((route) => (

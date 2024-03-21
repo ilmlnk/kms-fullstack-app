@@ -39,6 +39,8 @@ const signUpSchema = z.object({
         .min(1, "Email is required")
         .email("Email is not valid"),
 
+    phoneNumber: z.string(),
+
 
     username: z.string()
         .min(1, "Username is required")
@@ -70,6 +72,7 @@ export const SignUp = () => {
             lastName: "",
             idCode: "",
             email: "",
+            phoneNumber: "",
             username: "",
             password: "",
             confirmPassword: "",
@@ -80,8 +83,10 @@ export const SignUp = () => {
 
     const onSubmit = async (values: z.infer<typeof signUpSchema>) => {
         try {
+            console.log(values);
             const response = await axios.post('/api/parents/register', values);
-            router.push(`user/${response.data.id}/dashboard`);
+            const getObjectUserId = await axios.get(`/api/parents/${values.username}`);
+            router.push(`user/${getObjectUserId.data.id}/dashboard`);
         } catch (err) {
             console.log(err);
             toast.error("Something went wrong");
@@ -186,6 +191,28 @@ export const SignUp = () => {
                                             <Input
                                                 disabled={isSubmitting}
                                                 placeholder='example@kindersprout.com'
+                                                {...field}
+                                            />
+
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="phoneNumber"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            {/*Phone number*/}
+                                            {t("signup-page.phone-number")}
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                disabled={isSubmitting}
+                                                placeholder={t('signup-page.placeholder-phone-number')}
                                                 {...field}
                                             />
 
