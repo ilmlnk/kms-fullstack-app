@@ -1,6 +1,6 @@
 "use client"
 
-import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, CoinsIcon, CalendarDaysIcon } from "lucide-react";
+import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, CoinsIcon, CalendarDaysIcon, BabyIcon, SquareUserIcon } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -50,17 +50,27 @@ const teacherRoutes = [
     {
         icon: LayoutDashboardIcon,
         label: "Dashboard",
-        href: "/teacher/dashboard",
+        href: "dashboard",
     },
     {
         icon: List,
         label: "Subjects",
-        href: "/teacher/subjects",
+        href: "subjects",
     },
     {
         icon: BarChart,
         label: "Analytics",
-        href: "/teacher/analytics",
+        href: "analytics",
+    },
+    {
+        icon: BabyIcon,
+        label: "Children",
+        href: "children",
+    },
+    {
+        icon: SquareUserIcon,
+        label: "Parents",
+        href: "parents",
     },
 ];
 

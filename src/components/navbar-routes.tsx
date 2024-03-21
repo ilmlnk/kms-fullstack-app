@@ -18,7 +18,7 @@ export const NavbarRoutes = () => {
     const { setTheme } = useTheme();
 
     const isTeacherPage = pathname?.includes('/teacher');
-
+    
 
     return (
         <div className={`flex ml-auto `}>

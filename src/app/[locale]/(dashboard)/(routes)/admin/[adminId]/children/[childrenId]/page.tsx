@@ -33,12 +33,13 @@ export default function ChildPage() {
         }
 
         fetchChildData();
+        fetchChildSubjectData();
     }, []);
     return (
         <div>
             <h1 className="text-3xl font-bold">{childFullName}</h1>
             <div>
-
+                
             </div>
         </div>
     )
