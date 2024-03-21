@@ -1,6 +1,6 @@
 "use client"
 
-import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, CoinsIcon, CalendarDaysIcon, BabyIcon, SquareUserIcon } from "lucide-react";
+import { Layout, Compass, List, BarChart, FileArchiveIcon, LayoutDashboardIcon, UsersRoundIcon, UserCheckIcon, FileCheck2Icon, CoinsIcon, CalendarDaysIcon, BabyIcon, SquareUserIcon, GraduationCapIcon } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -76,24 +76,24 @@ const teacherRoutes = [
 
 const groupsRoutes = [
     {
-        icon: LayoutDashboardIcon,
-        label: "Dashboard",
-        href: "/teacher/dashboard",
+        icon: UsersRoundIcon,
+        label: "Group 1",
+        href: "groups",
     },
     {
-        icon: LayoutDashboardIcon,
-        label: "Dashboard",
-        href: "/teacher/dashboard",
+        icon: UsersRoundIcon,
+        label: "Group 2",
+        href: "groups",
     },
     {
-        icon: LayoutDashboardIcon,
-        label: "Dashboard",
-        href: "/teacher/dashboard",
+        icon: UsersRoundIcon,
+        label: "Group 3",
+        href: "groups",
     },
     {
-        icon: LayoutDashboardIcon,
-        label: "Dashboard",
-        href: "/teacher/dashboard",
+        icon: UsersRoundIcon,
+        label: "Group 4",
+        href: "groups",
     },
 ];
 
@@ -113,6 +113,21 @@ const adminRoutes = [
         icon: UsersRoundIcon,
         label: "Group Management",
         href: "group-management",
+    },
+    {
+        icon: GraduationCapIcon,
+        label: "Employees",
+        href: "employees",
+    },
+    {
+        icon: UsersRoundIcon,
+        label: "Parents",
+        href: "parents",
+    },
+    {
+        icon: BabyIcon,
+        label: "Children",
+        href: "children",
     },
     {
         icon: UserCheckIcon,

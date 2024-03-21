@@ -53,16 +53,3 @@ export const SidebarItem = ({
         </button>
     );
 }
-
-{/**
-<Icon
-                    size={22}
-                    className={cn(
-                        "text-slate-500 dark:text-slate-300",
-                        isActive && "text-sky-700 dark:text-sky-500"
-                    )}
-                    />
-
-
-
-*/}

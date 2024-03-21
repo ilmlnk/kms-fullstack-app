@@ -39,6 +39,8 @@ import { usePathname } from "next/navigation";
 export const UserButton = () => {
     const pathname = usePathname();
     const isTeacherPage = pathname?.includes('/teacher');
+    const isAdminPage = pathname?.includes('/admin');
+    const isParentPage = pathname?.includes('/user');
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild className="cursor-pointer">
