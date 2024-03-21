@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { subjectId: string } }
+    { params }: { params: { subjectId: number } }
 ) {
     try {
         const { subjectId } = params;
