@@ -25,7 +25,7 @@ import { Subject } from '@prisma/client';
 
 interface DescriptionFormProps {
     initialData: Subject;
-    subjectId: string;
+    subjectId: number;
 }
 
 const formSchema = z.object({

@@ -9,7 +9,7 @@ import { ImageForm } from "./_components/image-form";
 const SubjectPage = async ({
     params
 }: {
-    params: { subjectId: string }
+    params: { subjectId: number }
 }) => {
 
 

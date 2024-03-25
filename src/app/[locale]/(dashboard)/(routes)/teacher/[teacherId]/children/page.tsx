@@ -1,6 +1,8 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { Divide } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import internal from "stream";
@@ -16,8 +18,13 @@ export default function ChildrenPage() {
     const router = useRouter();
 
     useEffect(() => {
+    /**
+     * Fetches children data from the server.
+     *
+     * @return {Promise<void>} A promise that resolves when the children data is fetched.
+     */
         const fetchChildrenData = async () => {
-            const response = await fetch('/api/children');
+            const response = await axios.get('/api/children');
         }
     }, []);
     

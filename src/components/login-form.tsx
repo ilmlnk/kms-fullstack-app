@@ -20,6 +20,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { ChevronLeftIcon } from 'lucide-react';
 import { signIn } from 'next-auth/react';
+import { useState } from 'react';
+import { Spinner } from './loading-spinner';
 
 const signUpSchema: any = z.object({
     username: z.string(),
@@ -30,6 +32,7 @@ export const LoginAccount = () => {
     const router = useRouter();
     const pathname = usePathname();
     const language = pathname.split('/')[1];
+    const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof signUpSchema>>({
         resolver: zodResolver(signUpSchema),
@@ -42,6 +45,7 @@ export const LoginAccount = () => {
     const { isSubmitting, isValid } = form.formState;
 
     const onSubmit = async (values: z.infer<typeof signUpSchema>) => {
+        setLoading(true);
         try {
             const signInData = await signIn('credentials', {
                 username: values.username,
@@ -49,8 +53,10 @@ export const LoginAccount = () => {
             });
             if (signInData?.ok) {
                 toast.success("Login successful");
+                setLoading(false);
             }
         } catch (err) {
+            setLoading(false);
             toast.error("Something went wrong");
         }
     }
@@ -138,6 +144,12 @@ export const LoginAccount = () => {
                     </form>
                 </Form>
             </div>
+            {loading &&
+                (<div className='absolute w-[100%] h-[100%] bg-slate-700/50 backdrop-blur-sm'>
+                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 rounded-md bg-slate-500 shadow-sm'>
+                        <Spinner size='large' className='dark:text-slate-200 text-slate-200' />
+                    </div>
+                </div>)}
         </div>
     );
 }

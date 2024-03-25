@@ -7,8 +7,19 @@ import {
     AvatarFallback,
     AvatarImage,
 } from "@/components/ui/avatar"
+import axios from 'axios';
 
 export const VerificationCard = () => {
+
+    const acceptUser = async () => {
+        try {
+            const response = await axios.post('/api/admin/accept-user');
+            
+        } catch (error) {
+
+        }
+    }
+
     return (
         <div className="rounded-lg border bg-card text-card-foreground mt-4">
             <div className="grid grid-cols-2 place-content-between p-8">
@@ -23,7 +34,8 @@ export const VerificationCard = () => {
                     </div>
                 </div>
                 <div className="flex place-content-end gap-4">
-                    <Button className="rounded-full w-[50px] h-[50px] hover:text-white hover:bg-green-600 transition duration-200" variant="outline">
+                    <Button
+                        className="rounded-full w-[50px] h-[50px] hover:text-white hover:bg-green-600 transition duration-200" variant="outline">
                         <CheckIcon />
                     </Button>
                     <Button className="rounded-full w-[50px] h-[50px] hover:text-white hover:bg-red-600 transition duration-200" variant="outline">

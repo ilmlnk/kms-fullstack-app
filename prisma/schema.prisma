@@ -77,6 +77,7 @@ model Teacher {
   version_counter    Int?
   first_name         String
   last_name          String
+  acception_status   String?  @default("awaited")
   email              String   @unique
   phone_number       String   @unique
   username           String   @unique
@@ -95,10 +96,10 @@ model Parent {
   version_counter    Int?
   first_name         String?
   last_name          String?
-  id_code            String?    
-  email              String?    
-  phone_number       String?    
-  username           String?    
+  id_code            String?
+  email              String?
+  phone_number       String?
+  username           String?
   encrypted_password String?
   Child              Child?    @relation(fields: [childId], references: [id])
   childId            Int?
@@ -106,18 +107,20 @@ model Parent {
 }
 
 model Child {
-  id              Int      @id @default(autoincrement())
-  object_id       String
-  author_id       String
-  tenant_id       String
-  creation_date   DateTime
-  deleted         Boolean
-  version_counter Int?
-  first_name      String
-  last_name       String
-  parents         Parent[]
-  subject         Subject? @relation(fields: [subjectId], references: [id])
-  subjectId       Int
+  id                Int      @id @default(autoincrement())
+  object_id         String
+  author_id         String
+  tenant_id         String
+  creation_date     DateTime
+  deleted           Boolean
+  version_counter   Int?
+  first_name        String
+  last_name         String
+  acception_status  String   @default("awaited")
+  attendance_status Boolean? @default(false)
+  parents           Parent[]
+  subject           Subject? @relation(fields: [subjectId], references: [id])
+  subjectId         Int
 }
 
 model Administrator {
@@ -143,10 +146,10 @@ model User {
   creation_date   DateTime
   deleted         Boolean
   version_counter Int?
-  email           String?   
-  phone_number    String?   
+  email           String?
+  phone_number    String?
   role            String
-  username        String 
+  username        String
   password        String
 
   parent          Parent?        @relation(fields: [parentId], references: [id])
@@ -158,9 +161,15 @@ model User {
 }
 
 model Attachment {
-  id   Int    @id @default(autoincrement())
-  name String
-  url  String
+  id              Int      @id @default(autoincrement())
+  object_id       String   @unique
+  author_id       String   @unique
+  tenant_id       String   @unique
+  creation_date   DateTime
+  deleted         Boolean
+  version_counter Int?
+  name            String
+  url             String
 
   subject_id Int
   subject    Subject? @relation(fields: [subjectId], references: [id])
@@ -170,4 +179,14 @@ model Attachment {
   subjectId  Int?
 
   @@index([subject_id])
+}
+
+model Document {
+  id              Int      @id @default(autoincrement())
+  object_id       String   @unique
+  author_id       String   @unique
+  tenant_id       String   @unique
+  creation_date   DateTime
+  deleted         Boolean
+  version_counter Int?
 }

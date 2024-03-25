@@ -14,7 +14,7 @@ import { FileUpload } from "@/components/file-upload";
 
 interface ImageFormProps {
     initialData: Subject
-    subjectId: string;
+    subjectId: number;
 };
 
 const formSchema = z.object({

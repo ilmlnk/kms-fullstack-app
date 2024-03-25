@@ -8,11 +8,20 @@ import { UpcomingEvent } from "../../_components/upcoming-event";
 import { Separator } from "@/components/ui/separator";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useEffect } from "react";
 
 export default function DashboardPage() {
     const router = useRouter();
 
-
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/admin');
+            } catch (error) {
+                toast.error("Something went wrong");
+            }
+        }
+    });
     return (
         <div className="p-12">
             <div>
@@ -22,6 +31,9 @@ export default function DashboardPage() {
                         <div className="flex place-content-between">
                             <h1 className="text-2xl font-bold">Documents</h1>
                             <Button variant="outline">...</Button>
+                        </div>
+                        <div>
+
                         </div>
                     </div>
                     <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-8">

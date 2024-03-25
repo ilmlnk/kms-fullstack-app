@@ -1,0 +1,18 @@
+import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
+
+/**
+ * Retrieves all teachers from the database and returns them in a JSON response.
+ *
+ * @return {Promise<NextResponse>} JSON response containing the list of teachers
+ */
+export async function GET() {
+    try {
+        const teachers = await db.teacher.findMany();
+        return NextResponse.json(teachers);
+    } catch (error) {
+        console.error('[TEACHER]', error);
+        return NextResponse.json({ error: error }, { status: 500 });
+    }
+}
+
