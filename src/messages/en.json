@@ -34,11 +34,34 @@
             "login": "Sign In"
         },
         "landing-content": {
-            "hero-subtext": "Розширення можливостей завтрашніх лідерів, по одному дитячому садку за раз!",
+            "hero-subtext": "Less time for tasks, more time for children!",
             "hero-button": "Get Started"
         }
     },
     "login-page": {
         "title": ""
+    },
+    "signup-page": {
+        "title": "Форма реєстрації",
+        "description": "Впишіть свої дані, щоб почати працювати з сервісом.",
+        "first-name": "Ім'я",
+        "last-name": "Прізвище",
+        "id-code": "Код платника податків",
+        "birth-date": "Дата народження",
+        "email": "Електронна пошта",
+        "phone-number": "Номер телефону",
+        "username": "Ім'я користувача",
+        "password": "Пароль",
+        "confirm-password": "Підтвердіть пароль",
+        "submit": "Зареєструватися",
+        "placeholder-first-name": "Введіть своє ім'я",
+        "placeholder-last-name": "Введіть своє прізвище",
+        "placeholder-id-code": "Введіть свій код",
+        "placeholder-birth-date": "Введіть свій день народження",
+        "placeholder-email": "Введіть свою пошту",
+        "placeholder-phone-number": "Введіть номер телефону",
+        "placeholder-username": "Введіть свій юзернейм",
+        "placeholder-password": "Введіть свій пароль",
+        "placeholder-confirm-password": "Підтвердіть свій пароль"
     }
 }

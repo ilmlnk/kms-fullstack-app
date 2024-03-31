@@ -12,16 +12,16 @@
                     "description": "Enhance direct communication with your customers"
                 }
             },
-            "marketplace": "Маркетплейс",
-            "community-support": "Спільнота та підтримка",
+            "marketplace": "Platforma handlowa",
+            "community-support": "Społeczność i wsparcie",
             "community-support-dropdown": {
-                "enrollment": "Залучення"
+                "enrollment": "Zaangażowanie"
             },
-            "company": "Компанія",
+            "company": "Firma",
             "toggle-mode": {
-                "dark-mode": "Темна тема",
-                "light-mode": "Світла тема",
-                "system-mode": "Системна тема"
+                "dark-mode": "Tryb ciemny",
+                "light-mode": "Tryb jasny",
+                "system-mode": "Tryb systemowy"
             },
             "signup": "Zarejestruj",
             "signup-dialog": {
@@ -31,13 +31,13 @@
                 "teacher": "Jestem pedagogiem",
                 "admin": "Jestem administratorem"
             },
-            "login": "Увійти"
+            "login": "Zaloguj się"
         },
         "landing-content": {
-            "hero-subtext": "Розширення можливостей завтрашніх лідерів, по одному дитячому садку за раз!",
-            "hero-button": "Розпочинаймо!",
+            "hero-subtext": "Mniej czasu na zadania. Więcej czasu dla dzieci!",
+            "hero-button": "Zaczynamy",
             "functionality-chapter": {
-                "functionality-title": "Функціональність"
+                "functionality-title": "Funkcjonalność"
             }
         }
     },
@@ -49,15 +49,25 @@
     },
     "signup-page": {
         "title": "Форма реєстрації",
-        "description": "Wprowadź swoje dane uwierzytelniające, aby rozpocząć pracę z aplikacją.",
-        "first-name": "Imię",
-        "last-name": "Nazwisko",
-        "id-code": "Kod PESEL",
-        "birth-date": "Data urodzenia",
-        "email": "Email",
-        "username": "Nazwa użytkownika",
-        "password": "Hasło",
-        "confirm-password": "Powtórz hasło",
-        "continue-button": "Dalej"
+        "description": "Впишіть свої дані, щоб почати працювати з сервісом.",
+        "first-name": "Ім'я",
+        "last-name": "Прізвище",
+        "id-code": "Код платника податків",
+        "birth-date": "Дата народження",
+        "email": "Електронна пошта",
+        "phone-number": "Номер телефону",
+        "username": "Ім'я користувача",
+        "password": "Пароль",
+        "confirm-password": "Підтвердіть пароль",
+        "submit": "Зареєструватися",
+        "placeholder-first-name": "Введіть своє ім'я",
+        "placeholder-last-name": "Введіть своє прізвище",
+        "placeholder-id-code": "Введіть свій код",
+        "placeholder-birth-date": "Введіть свій день народження",
+        "placeholder-email": "Введіть свою пошту",
+        "placeholder-phone-number": "Введіть номер телефону",
+        "placeholder-username": "Введіть свій юзернейм",
+        "placeholder-password": "Введіть свій пароль",
+        "placeholder-confirm-password": "Підтвердіть свій пароль"
     }
 }

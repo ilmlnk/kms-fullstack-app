@@ -43,7 +43,7 @@ export function DialogWindow({
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <Button variant="outline">
-            <Link href={`${language}/sign-up`} className="w-full">
+            <Link href={`${language}/parent-register`} className="w-full">
               {/* I'm a Parent */}
               {t('landing-page.header.signup-dialog.parent')}
             </Link>
@@ -59,7 +59,7 @@ export function DialogWindow({
           <Button variant="outline">
             <Link href={`${language}/admin-register`} className="w-full">
               {/*I'm an Admin*/}
-              {t('landing-page.header.signup-dialog.teacher')}
+              {t('landing-page.header.signup-dialog.admin')}
             </Link>
           </Button>
 

@@ -69,7 +69,7 @@ export async function POST(
                 creation_date: new Date(),
                 deleted: false,
                 version_counter: 0,
-                role: 'parent',
+                role: 'PARENT',
                 email: email,
                 username: username,
                 password: hashedPassword,

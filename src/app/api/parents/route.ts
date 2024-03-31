@@ -8,7 +8,7 @@ export async function GET(
         const parents = await db.parent.findMany();
         return NextResponse.json(parents);
     } catch (error) {
-        console.log('[EVENTS]', error);
+        console.log('[PARENTS]', error);
         return new NextResponse("Failed to fetch events", { status: 500 });
     }
 }

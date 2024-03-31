@@ -8,10 +8,10 @@ import { db } from "@/lib/db";
  */
 export async function GET() {
     try {
-        const teachers = await db.teacher.findMany();
-        return NextResponse.json(teachers);
+        const administrators = await db.administrator.findMany();
+        return NextResponse.json(administrators);
     } catch (error) {
-        console.error('[TEACHER]', error);
+        console.error('[ADMIN]', error);
         return NextResponse.json({ error: error }, { status: 500 });
     }
 }

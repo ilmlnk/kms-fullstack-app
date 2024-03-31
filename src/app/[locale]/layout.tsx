@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ToastProvider } from "@/components/toaster-provider";
 import React from "react";
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +30,7 @@ const RootLayout = ({
 
 
   return (
-    <>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang={locale} suppressHydrationWarning>
         <head />
         <body className={inter.className}>
@@ -48,7 +48,7 @@ const RootLayout = ({
         </body>
 
       </html>
-    </>
+    </ClerkProvider>
   );
 }
 

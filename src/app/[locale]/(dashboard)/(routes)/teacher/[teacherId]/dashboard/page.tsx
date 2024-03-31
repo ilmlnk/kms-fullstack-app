@@ -25,36 +25,19 @@ export default function DashboardPage() {
                             <Button variant="outline">...</Button>
                         </div>
                     </div>
-                    <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-8">
-                        <div className="flex place-content-between">
-                            <h1 className="text-2xl font-bold">Verification</h1>
-                            <Button onClick={() => router.push('')} variant="outline">...</Button>
-                        </div>
-                        <div>
-                            {/*<VerificationCard />*/}
-                        </div>
-                    </div>
-                    <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-8">
-                        <div className="flex place-content-between">
-                            <h1 className="text-2xl font-bold">Manage Schedule</h1>
-                            <Button variant="outline">...</Button>
-                        </div>
-                        <div className="mt-4">
-                            <h1 className="text-xl font-semibold text-slate-400">Upcoming Events</h1>
-                            <div>
 
-                                {/*<UpcomingEvent />*/}
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div className="mt-8 rounded-lg border bg-card text-card-foreground shadow-sm p-8">
+                <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-8 mt-8">
                     <div className="flex place-content-between">
-                        <h1 className="text-2xl font-bold">Payments</h1>
+                        <h1 className="text-2xl font-bold">Manage Schedule</h1>
                         <Button variant="outline">...</Button>
                     </div>
-                    <div>
-                        {/*<PaymentTable />*/}
+                    <div className="mt-4">
+                        <h1 className="text-xl font-semibold text-slate-400">Upcoming Events</h1>
+                        <div>
+
+                            {/*<UpcomingEvent />*/}
+                        </div>
                     </div>
                 </div>
             </div>

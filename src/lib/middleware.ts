@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import { authMiddleware } from "@clerk/nextjs";
+
+export default authMiddleware({
+    publicRoutes: ['/', '/login', '/signup',],
+    
+});
 
 export function middleware(request: NextRequest) {
     const currentUser = request.cookies.get('currentUser')?.value;
@@ -12,5 +18,10 @@ export function middleware(request: NextRequest) {
 
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+    matcher: [
+        '/((?!api|_next/static|_next/image|.*\\.png$).*)',
+        '/((?!.+\\.[\\w]+$|_next).*)',
+        '/', 
+        '/(api|trpc)(.*)'
+    ],
 }

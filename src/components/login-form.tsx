@@ -22,6 +22,7 @@ import { ChevronLeftIcon } from 'lucide-react';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { Spinner } from './loading-spinner';
+import Link from 'next/navigation';
 
 const signUpSchema: any = z.object({
     username: z.string(),
@@ -134,6 +135,12 @@ export const LoginAccount = () => {
                             </label>
 
                         </div>
+
+                        <div className="text-sm mt-4">
+                            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                Forgot password?
+                            </a>
+                        </div>
                         <div className='grid items-center gap-x-2 mt-4'>
                             <Button
                                 type='submit'
@@ -141,6 +148,12 @@ export const LoginAccount = () => {
                                 Continue
                             </Button>
                         </div>
+                        <p className="mt-10 text-center text-sm text-gray-500">
+                            Don&apos;t have an account?{' '}
+                            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                Sign up
+                            </a>
+                        </p>
                     </form>
                 </Form>
             </div>
